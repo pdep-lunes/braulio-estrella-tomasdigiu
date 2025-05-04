@@ -46,3 +46,12 @@ atacarConPoderEspecial :: Personaje -> String
 atacarConPoderEspecial unPersonaje
   | tieneSuperPoder unPersonaje == True = "Atacas a tu contrincante con el super y con el basico."
   | otherwise = "No haces nada"
+
+quienesEstanUltimas :: [Personaje] -> [String]
+quienesEstanUltimas listaPersonajes = map extraerNombre (filter (estaUltimas) listaPersonajes)
+
+estaUltimas :: Personaje -> Bool
+estaUltimas unPersonaje = vida unPersonaje < 800
+
+extraerNombre :: Personaje -> String
+extraerNombre unPersonaje = nombre unPersonaje
