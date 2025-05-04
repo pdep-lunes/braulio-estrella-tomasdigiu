@@ -41,3 +41,8 @@ granadaDeEspinas radio otroPersonaje
 
 torretaCurativa :: Personaje -> Personaje
 torretaCurativa unPersonaje = unPersonaje {tieneSuperPoder = True, vida = vida unPersonaje * 2}
+
+atacarConPoderEspecial :: Personaje -> String
+atacarConPoderEspecial unPersonaje
+  | tieneSuperPoder unPersonaje == True = "Atacas a tu contrincante con el super y con el basico."
+  | otherwise = "No haces nada"
