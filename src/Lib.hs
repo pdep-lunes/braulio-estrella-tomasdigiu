@@ -38,3 +38,6 @@ granadaDeEspinas radio otroPersonaje
   | radio > 3 && vida otroPersonaje < 800 = otroPersonaje {nombre = nombre otroPersonaje ++ " - Espina estuvo aqui", tieneSuperPoder = False, vida = 0}
   | radio > 3 = bolaEspinosa (otroPersonaje {nombre = nombre otroPersonaje ++ " - Espina estuvo aqui"})
   | otherwise = bolaEspinosa otroPersonaje
+
+torretaCurativa :: Personaje -> Personaje
+torretaCurativa unPersonaje = unPersonaje {tieneSuperPoder = True, vida = vida unPersonaje * 2}
