@@ -10,7 +10,7 @@ data Personaje = UnPersonaje {
     poderBasico :: String, 
     superPoder :: String,
     tieneSuperPoder :: Bool,
-    cantidadDeVida :: Int
+    vida :: Int
 } deriving Show
 
 espina :: Personaje
@@ -19,19 +19,10 @@ espina = UnPersonaje "Espina" "Bola de Espinas" "Granada de Espinas Radio 5" Tru
 pamela :: Personaje
 pamela = UnPersonaje "Pamela" "Lluvia de Tuercas Sanadoras" "Torreta Curativa" False 9600
 
-bolaEspinosa :: Int -> Int
-bolaEspinosa vida
-  | vida >= 1000 = vida - 1000
-  | otherwise = 0
+brawlers :: [Personaje]
+brawlers = [espina, pamela]
 
-lluviaDeTuercas :: String -> Int -> Int
-lluviaDeTuercas tipoDeTuercas vida
-  | tipoDeTuercas == "Sanadoras" = vida + 800
-  | tipoDeTuercas == "Dañinas" = div vida 2
-  | otherwise = vida
-
-granadaDeEspinas :: Personaje -> Int -> Personaje
-granadaDeEspinas unPersonaje radio
-  | radio > 3 =  unPersonaje {nombre = nombre ++ " Espina estuvo aqui"}
-  | radio > 3 && cantidadDeVida unPersonaje < 800 = UnPersonaje 
-  | otherwise = unPersonaje
+bolaEspinosa :: Personaje -> Personaje
+bolaEspinosa unPersonaje
+  | vida unPersonaje > 1000 = unPersonaje {vida = vida unPersonaje - 1000}
+  | otherwise = unPersonaje {vida = 0}
