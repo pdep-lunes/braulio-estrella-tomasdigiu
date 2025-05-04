@@ -26,3 +26,9 @@ bolaEspinosa :: Personaje -> Personaje
 bolaEspinosa unPersonaje
   | vida unPersonaje > 1000 = unPersonaje {vida = vida unPersonaje - 1000}
   | otherwise = unPersonaje {vida = 0}
+
+lluviaDeTuercas :: Personaje -> Personaje -> Personaje
+lluviaDeTuercas unPamela otroPersonaje
+  | poderBasico unPamela == "Lluvia de Tuercas Sanadoras" = otroPersonaje {vida = vida otroPersonaje + 800}
+  | poderBasico unPamela == "Lluvia de Tuercas Dañinas" = otroPersonaje {vida = div (vida otroPersonaje) 2}
+  | otherwise = otroPersonaje
