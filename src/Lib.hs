@@ -32,3 +32,9 @@ lluviaDeTuercas unPamela otroPersonaje
   | poderBasico unPamela == "Lluvia de Tuercas Sanadoras" = otroPersonaje {vida = vida otroPersonaje + 800}
   | poderBasico unPamela == "Lluvia de Tuercas Dañinas" = otroPersonaje {vida = div (vida otroPersonaje) 2}
   | otherwise = otroPersonaje
+
+granadaDeEspinas :: Int -> Personaje -> Personaje
+granadaDeEspinas radio otroPersonaje
+  | radio > 3 && vida otroPersonaje < 800 = otroPersonaje {nombre = nombre otroPersonaje ++ " - Espina estuvo aqui", tieneSuperPoder = False, vida = 0}
+  | radio > 3 = bolaEspinosa (otroPersonaje {nombre = nombre otroPersonaje ++ " - Espina estuvo aqui"})
+  | otherwise = bolaEspinosa otroPersonaje
